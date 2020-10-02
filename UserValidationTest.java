@@ -49,6 +49,20 @@ public class UserValidationTest {
 		assertEquals( "false", userValidation.validateEmail("ab.xyz@bl.co.in") );
 		assertEquals( "false" , userValidation.validateEmail("abc.xyz@bl.com"));	
 	}
+	
+	//UC 4
+	
+		@Test
+		public void mobile_ifValid_shouldReturnTrue() {
+			assertEquals( "true", userValidation.validateMobile("981 1112223333") );
+			assertEquals( "true" , userValidation.validateMobile("1 2223334444"));	
+		}
+		
+		@Test
+		public void mobile_ifInvalid_shouldReturnFalse() {
+			assertEquals( "false", userValidation.validateMobile("999888777") );
+			assertEquals( "false" , userValidation.validateMobile("9999 9997776665"));	
+		}
 
 
 	

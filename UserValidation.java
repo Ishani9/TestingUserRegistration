@@ -43,6 +43,19 @@ public class UserValidation {
 				return "false";
 			}			
 		}
+		
+		//USE CASE 4------
+				public String validateMobile(String s) {
+					String regex = "^([0-9]{1,3}[ ][0-9]{10})$";
+					Pattern pattern = Pattern.compile(regex);
+					Matcher matcher= pattern.matcher(s);
+					if (matcher.find()) {
+						return "true";
+					}
+					else {
+						return "false";
+					}			
+				}
 	
 		
 	
