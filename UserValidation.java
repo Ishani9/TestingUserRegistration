@@ -56,6 +56,20 @@ public class UserValidation {
 						return "false";
 					}			
 				}
+				
+		//USE CASE 5------
+				public String validatePassword(String s) {
+					String regex = "^([A-Za-z0-9@#$%^&*]{8,})$";
+					Pattern pattern = Pattern.compile(regex);
+					Matcher matcher= pattern.matcher(s);
+					if (matcher.find()) {
+						return "true";
+					}
+					else {
+						return "false";
+					}			
+				}
+	
 	
 		
 	
