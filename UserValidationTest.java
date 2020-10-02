@@ -2,36 +2,35 @@ package com.bl.testingUserReg;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.runners.Parameterized.Parameter;
 
 
 public class UserValidationTest {
 	
 	UserValidation userValidation = new UserValidation();
 	
-	//UC 10
 	
+	//UC 11
 	@Test
-	public void userEntry_ifValid_shouldReturnHappy() {
-		String name = "Ishani";
-		String surname = "Mhatre";
-		String mobile = "91 2223334445";
-		String email = "abc+100@gmail.com";
-		String password = "ASDF@23456";
-		assertEquals("HAPPY", userValidation.validateUser(name, surname, mobile, email, password));
+	public void multipleEmail_ifValid_shouldReturnValid() {
+		
+		String[] valid_email;
+		valid_email =  new String[]{"abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com"};
+			
+		for(int i=0; i<valid_email.length; i++) {
+			assertEquals("true", userValidation.validateEmail(valid_email[i]));		
+		}
 	}
-	
 	@Test
-	public void userEntry_ifInvalid_shouldReturnSad() {
-		String name = "IS";
-		String surname = "mhatre";
-		String mobile = "99995 77755";
-		String email = "abc+100@gmail.com.ac.in";
-		String password = "aaaabbb222";
-		assertEquals("SAD", userValidation.validateUser(name, surname, mobile, email, password));
+	public void multipleEmail_ifInvalid_shouldReturnInvalid() {
+			
+		String[] invalid_email;
+		invalid_email =  new String[]{"abc", "abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com", ".abc@abc.com", "abc()*.com", "abc@%*.com", "abc..2002@gmail.com", "abc.@gmail.com", "abc@abc@gmail.com", "abc@gmail.com.1a", "abc@gmail.com.aa.au"};
+		for(int i=0; i<invalid_email.length; i++) {
+			assertEquals("false", userValidation.validateEmail(invalid_email[i]));		
+		}	
 	}
-	
-	
-	
+		
 	
 	//UC1
 	
@@ -119,6 +118,27 @@ public class UserValidationTest {
 		}
 		
 		
+		
+	//UC 10
 	
+	@Test
+	public void userEntry_ifValid_shouldReturnHappy() {
+		String name = "Ishani";
+		String surname = "Mhatre";
+		String mobile = "91 2223334445";
+		String email = "abc+100@gmail.com";
+		String password = "ASDF@23456";
+		assertEquals("HAPPY", userValidation.validateUser(name, surname, mobile, email, password));
+	}
+	
+	@Test
+	public void userEntry_ifInvalid_shouldReturnSad() {
+		String name = "IS";
+		String surname = "mhatre";
+		String mobile = "99995 77755";
+		String email = "abc+100@gmail.com.ac.in";
+		String password = "aaaabbb222";
+		assertEquals("SAD", userValidation.validateUser(name, surname, mobile, email, password));
+	}
 
 }
