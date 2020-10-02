@@ -21,6 +21,18 @@ public class UserValidationTest {
 		assertEquals( "false", userValidation.validateName("Is") );
 		assertEquals( "false" , userValidation.validateName("ishani"));	
 	}
+	
+	@Test
+	public void surName_ifValid_shouldReturnTrue() {
+		assertEquals( "true", userValidation.validateSurname("Mhatre") );
+		assertEquals( "true" , userValidation.validateSurname("Mha"));	
+	}
+	
+	@Test
+	public void surName_ifInvalid_shouldReturnFalse() {
+		assertEquals( "false", userValidation.validateSurname("Mh") );
+		assertEquals( "false" , userValidation.validateSurname("mhatre"));	
+	}
 
 	
 
