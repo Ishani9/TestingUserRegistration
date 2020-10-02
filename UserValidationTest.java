@@ -40,14 +40,29 @@ public class UserValidationTest {
 	
 	@Test
 	public void email_ifValid_shouldReturnTrue() {
-		assertEquals( "true", userValidation.validateEmail("abc.xyz@bl.co.in") );
-		assertEquals( "true" , userValidation.validateEmail("abc.wxyzzz@bl.co.uk"));	
+		assertEquals( "true", userValidation.validateEmail("abc@yahoo.com") );
+		assertEquals( "true" , userValidation.validateEmail("abc-100@yahoo.com"));
+		assertEquals( "true" , userValidation.validateEmail("abc.100@yahoo.com"));
+		assertEquals( "true" , userValidation.validateEmail("abc111@abc.com"));
+		assertEquals( "true" , userValidation.validateEmail("abc-100@yabc.net"));
+		assertEquals( "true" , userValidation.validateEmail("abc.100@abc.com.au"));
+		assertEquals( "true" , userValidation.validateEmail("abc@gmail.com.com"));
+		assertEquals( "true" , userValidation.validateEmail("abc+100@gmail.com"));
 	}
 	
 	@Test
 	public void email_ifInvalid_shouldReturnFalse() {
-		assertEquals( "false", userValidation.validateEmail("ab.xyz@bl.co.in") );
-		assertEquals( "false" , userValidation.validateEmail("abc.xyz@bl.com"));	
+		assertEquals( "false", userValidation.validateEmail("abc"));
+		assertEquals( "false" , userValidation.validateEmail("abc@.com.my"));
+		assertEquals( "false" , userValidation.validateEmail("abc123@gmail.a"));
+		assertEquals( "false" , userValidation.validateEmail("abc123@.com"));
+		assertEquals( "false" , userValidation.validateEmail("abc123@.com.com"));
+		assertEquals( "false" , userValidation.validateEmail("abc()*.com"));
+		assertEquals( "false" , userValidation.validateEmail("abc@%*.com"));
+		assertEquals( "false" , userValidation.validateEmail("abc..2002@gmail.com"));
+		assertEquals( "false" , userValidation.validateEmail("abc.@gmail.com"));
+		assertEquals( "false" , userValidation.validateEmail("abc@abc@gmail.com"));
+		assertEquals( "false" , userValidation.validateEmail("abc@gmail.com.aa.au"));
 	}
 	
 	//UC 4

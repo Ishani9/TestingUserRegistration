@@ -33,7 +33,7 @@ public class UserValidation {
 	
 	//USE CASE 3------
 		public String validateEmail(String s) {
-			String regex = "^(abc[.][A-Za-z]+@bl[.]co[.][A-Za-z]{2,})$";
+			String regex = "^[a-zA-Z0-9]+[-+.]?+[A-Za-z0-9]+[@]+[A-Za-z0-9]+[.][a-z]{2,}+[.]?+([a-z]{2,})?$";
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher= pattern.matcher(s);
 			if (matcher.find()) {
