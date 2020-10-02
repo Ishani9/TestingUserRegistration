@@ -16,11 +16,6 @@ public class UserValidation {
 		}		
 	}
 	
-	//UC 11
-	
-	String[] strings = {"abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com"};
-
-	
 	//USE CASE 1------
 	public String validateName(String s) {
 		String regex = "(^[A-Z]{1}[a-z]{2,}$)";
