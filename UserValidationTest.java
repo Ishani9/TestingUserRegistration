@@ -8,6 +8,31 @@ public class UserValidationTest {
 	
 	UserValidation userValidation = new UserValidation();
 	
+	//UC 10
+	
+	@Test
+	public void userEntry_ifValid_shouldReturnHappy() {
+		String name = "Ishani";
+		String surname = "Mhatre";
+		String mobile = "91 2223334445";
+		String email = "abc+100@gmail.com";
+		String password = "ASDF@23456";
+		assertEquals("HAPPY", userValidation.validateUser(name, surname, mobile, email, password));
+	}
+	
+	@Test
+	public void userEntry_ifInvalid_shouldReturnSad() {
+		String name = "IS";
+		String surname = "mhatre";
+		String mobile = "99995 77755";
+		String email = "abc+100@gmail.com.ac.in";
+		String password = "aaaabbb222";
+		assertEquals("SAD", userValidation.validateUser(name, surname, mobile, email, password));
+	}
+	
+	
+	
+	
 	//UC1
 	
 	@Test
