@@ -63,8 +63,22 @@ public class UserValidationTest {
 			assertEquals( "false", userValidation.validateMobile("999888777") );
 			assertEquals( "false" , userValidation.validateMobile("9999 9997776665"));	
 		}
-
-
+		
+	//UC 5
+		
+		@Test
+		public void password_ifValid_shouldReturnTrue() {
+			assertEquals( "true", userValidation.validatePassword("abcdef123") );
+			assertEquals( "true" , userValidation.validatePassword("ASDF12345"));	
+		}
+		
+		@Test
+		public void password_ifInvalid_shouldReturnFalse() {
+			assertEquals( "false", userValidation.validatePassword("2222") );
+			assertEquals( "false" , userValidation.validatePassword("com.mml"));	
+		}
+		
+		
 	
 
 }
