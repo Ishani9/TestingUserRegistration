@@ -22,6 +22,8 @@ public class UserValidationTest {
 		assertEquals( "false" , userValidation.validateName("ishani"));	
 	}
 	
+	// UC 2
+	
 	@Test
 	public void surName_ifValid_shouldReturnTrue() {
 		assertEquals( "true", userValidation.validateSurname("Mhatre") );
@@ -33,6 +35,21 @@ public class UserValidationTest {
 		assertEquals( "false", userValidation.validateSurname("Mh") );
 		assertEquals( "false" , userValidation.validateSurname("mhatre"));	
 	}
+	
+	//UC 3
+	
+	@Test
+	public void email_ifValid_shouldReturnTrue() {
+		assertEquals( "true", userValidation.validateEmail("abc.xyz@bl.co.in") );
+		assertEquals( "true" , userValidation.validateEmail("abc.wxyzzz@bl.co.uk"));	
+	}
+	
+	@Test
+	public void email_ifInvalid_shouldReturnFalse() {
+		assertEquals( "false", userValidation.validateEmail("ab.xyz@bl.co.in") );
+		assertEquals( "false" , userValidation.validateEmail("abc.xyz@bl.com"));	
+	}
+
 
 	
 
