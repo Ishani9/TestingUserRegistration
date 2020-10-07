@@ -4,6 +4,7 @@ package com.javapractice;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+
 public class UserValidation {
 	
 	public boolean matchpattern(String regex, String input) {
@@ -18,88 +19,72 @@ public class UserValidation {
 	}
 	
 	//USE CASE 1------
-	public String validateName(String s) 
-	{
+	ValidateEntry validateFirstName = (String firstName) -> {
 		String regex = "(^[A-Z]{1}[a-z]{2,}$)";
-		try {
-			if(matchpattern(regex , s)) {
+		
+			if(matchpattern(regex , firstName)) {
 				return "true";
 			}
 			else {
-				throw new UserValidationException(UserValidationException.invalidCredentials.invalidFirstName, "Invalid User name Details");
+				throw new UserValidationException(UserValidationException.invalidCredentials.invalidFirstName, 
+						"Invalid User name Details");
 			}
-		}
-		catch(UserValidationException e) {
-			return e.type.toString();
-		}
-	}
+	};	
+	
 	
 	//USE CASE 2------
-	public String validateSurname(String s) {
-		String regex = "(^[A-Z]{1}[a-z]{2,}$)";	
-		try {
-			if(matchpattern(regex , s)) {
+	ValidateEntry validateLastName = (String lastName) -> {
+		
+			if(matchpattern("(^[A-Z]{1}[a-z]{2,}$)" , lastName)) {
 				return "true";
 			}
 			else {
-				throw new UserValidationException(UserValidationException.invalidCredentials.invalidLastName, "Invalid User last name Details");
-			}		
-	}
-		catch(UserValidationException e) {
-			return e.type.toString();
-		}
-	}
-	
+				throw new UserValidationException(UserValidationException.invalidCredentials.invalidLastName, 
+						"Invalid User last name Details");
+			}
+	};
 	
 	
 	//USE CASE 3------
-	public String validateEmail(String s) {
-		String regex = "^[a-zA-Z0-9]+[-+.]?+[A-Za-z0-9]+[@]+[A-Za-z0-9]+[.][a-z]{2,}+[.]?+([a-z]{2,})?$";
-		try {
-			if(matchpattern(regex , s)) {
+	ValidateEntry validateEmail = (String email) -> {	
+			if(matchpattern("^[a-zA-Z0-9]+[-+.]?+[A-Za-z0-9]+[@]+[A-Za-z0-9]+[.][a-z]{2,}+[.]?+([a-z]{2,})?$" , email)) {
 				return "true";
 			}
 			else {
 				throw new UserValidationException(UserValidationException.invalidCredentials.invalidEmail, "Invalid User email Details");
 			}		
-		}
-		catch(UserValidationException e) {
-			return e.type.toString();
-		}
-	}
+		
+	};
+		
 		
 	//USE CASE 4------
-	public String validateMobile(String s) {
-		String regex = "^([0-9]{1,3}[ ][0-9]{10})$";
-		try {			
-			if(matchpattern(regex , s)) {
+	ValidateEntry validateMobile = (String mobile) -> {
+					
+			if(matchpattern("^([0-9]{1,3}[ ][0-9]{10})$" , mobile)) {
 				return "true";
 			}
 			else {
 				throw new UserValidationException(UserValidationException.invalidCredentials.invalidMobileNumber, "Invalid User mobile Details");
 			}		
-		}
-		catch(UserValidationException e) {
-			return e.type.toString();
-		}
-	}
+		};
+		
+	
 				
 	//USE CASE 7------
-	public String validatePassword(String s) {
-		String regex = "^((?=.*[A-Z]+)(?=.*[0-9]+)([A-Za-z0-9@#$%^&*]{8,}))$";
-		try {
-			if(matchpattern(regex , s)) {
+	ValidateEntry validatePassword = (String password) -> {
+		
+			if(matchpattern("^((?=.*[A-Z]+)(?=.*[0-9]+)([A-Za-z0-9@#$%^&*]{8,}))$" , password)) {
 				return "true";
 			}
 			else {
 				throw new UserValidationException(UserValidationException.invalidCredentials.invalidPassword, "Invalid User password Details");
 			}		
-		}
-		catch(UserValidationException e) {
-			return e.type.toString();
-		}
-	}
-	
+		};
+		
+}
+/*		
+		
+		
 	//UC10
 	
 	public String validateUser(String name, String surname, String mobile, String email, String password) {
@@ -113,5 +98,6 @@ public class UserValidation {
 			return "SAD";
 		}
 	}
-}
+	*/
+
 	

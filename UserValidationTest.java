@@ -16,17 +16,25 @@ public class UserValidationTest {
 	
 	@Test
 	public void firstName_ifValid_shouldReturnTrue() {
-		
-		assertEquals( "true", userValidation.validateName("Isha") );
-		assertEquals( "true" , userValidation.validateName("Ishani"));	
+		try {
+			assertEquals( "true", userValidation.validateFirstName.validate("Isha") );
+			assertEquals( "true" , userValidation.validateFirstName.validate("Ishani"));	
 
 		}
+		catch(UserValidationException e){
+		}
+			
+	}
 	
 	@Test
 	public void firstName_ifInvalid_shouldReturnFalse() {
-
-		assertEquals( "invalidFirstName", userValidation.validateName("Is") );
-		assertEquals( "invalidFirstName" , userValidation.validateName("ishani"));	
+		try {
+			assertEquals( "invalidFirstName", userValidation.validateFirstName.validate("Is") );
+			assertEquals( "invalidFirstName" , userValidation.validateFirstName.validate("ishani"));	
+		}
+		catch(UserValidationException e) {
+			
+		}
 	}
 	
 	
@@ -34,14 +42,24 @@ public class UserValidationTest {
 	
 	@Test
 	public void surName_ifValid_shouldReturnTrue() {
-		assertEquals( "true", userValidation.validateSurname("Mhatre") );
-		assertEquals( "true" , userValidation.validateSurname("Mha"));	
+		try {
+			assertEquals( "true", userValidation.validateLastName.validate("Mhatre") );
+			assertEquals( "true" , userValidation.validateLastName.validate("Mha"));	
+		}
+		catch(UserValidationException e){
+		}
+			
 	}
 	
 	@Test
 	public void surName_ifInvalid_shouldReturnFalse() {
-		assertEquals( "invalidLastName", userValidation.validateSurname("Mh") );
-		assertEquals( "invalidLastName" , userValidation.validateSurname("mhatre"));	
+		try {
+			assertEquals( "invalidLastName", userValidation.validateLastName.validate("Mh") );
+			assertEquals( "invalidLastName" , userValidation.validateLastName.validate("mhatre"));	
+		}
+		catch(UserValidationException e){
+		}
+			
 	}
 	
 	
@@ -49,60 +67,90 @@ public class UserValidationTest {
 	
 	@Test
 	public void email_ifValid_shouldReturnTrue() {
-		assertEquals( "true", userValidation.validateEmail("abc@yahoo.com") );
-		assertEquals( "true" , userValidation.validateEmail("abc-100@yahoo.com"));
-		assertEquals( "true" , userValidation.validateEmail("abc.100@yahoo.com"));
-		assertEquals( "true" , userValidation.validateEmail("abc111@abc.com"));
-		assertEquals( "true" , userValidation.validateEmail("abc-100@yabc.net"));
-		assertEquals( "true" , userValidation.validateEmail("abc.100@abc.com.au"));
-		assertEquals( "true" , userValidation.validateEmail("abc@gmail.com.com"));
-		assertEquals( "true" , userValidation.validateEmail("abc+100@gmail.com"));
+		try {
+			assertEquals( "true", userValidation.validateEmail.validate("abc@yahoo.com") );
+			assertEquals( "true" , userValidation.validateEmail.validate("abc-100@yahoo.com"));
+			assertEquals( "true" , userValidation.validateEmail.validate("abc.100@yahoo.com"));
+			assertEquals( "true" , userValidation.validateEmail.validate("abc111@abc.com"));
+			assertEquals( "true" , userValidation.validateEmail.validate("abc-100@yabc.net"));
+			assertEquals( "true" , userValidation.validateEmail.validate("abc.100@abc.com.au"));
+			assertEquals( "true" , userValidation.validateEmail.validate("abc@gmail.com.com"));
+			assertEquals( "true" , userValidation.validateEmail.validate("abc+100@gmail.com"));
+		}
+		catch(UserValidationException e){
+		}
+			
 	}
 	
 	@Test
 	public void email_ifInvalid_shouldReturnFalse() {
-		assertEquals( "invalidEmail", userValidation.validateEmail("abc"));
-		assertEquals( "invalidEmail" , userValidation.validateEmail("abc@.com.my"));
-		assertEquals( "invalidEmail" , userValidation.validateEmail("abc123@gmail.a"));
-		assertEquals( "invalidEmail" , userValidation.validateEmail("abc123@.com"));
-		assertEquals( "invalidEmail" , userValidation.validateEmail("abc123@.com.com"));
-		assertEquals( "invalidEmail" , userValidation.validateEmail("abc()*.com"));
-		assertEquals( "invalidEmail" , userValidation.validateEmail("abc@%*.com"));
-		assertEquals( "invalidEmail" , userValidation.validateEmail("abc..2002@gmail.com"));
-		assertEquals( "invalidEmail" , userValidation.validateEmail("abc.@gmail.com"));
-		assertEquals( "invalidEmail" , userValidation.validateEmail("abc@abc@gmail.com"));
-		assertEquals( "invalidEmail" , userValidation.validateEmail("abc@gmail.com.aa.au"));
+		try {
+			assertEquals( "invalidEmail", userValidation.validateEmail.validate("abc"));
+			assertEquals( "invalidEmail" , userValidation.validateEmail.validate("abc@.com.my"));
+			assertEquals( "invalidEmail" , userValidation.validateEmail.validate("abc123@gmail.a"));
+			assertEquals( "invalidEmail" , userValidation.validateEmail.validate("abc123@.com"));
+			assertEquals( "invalidEmail" , userValidation.validateEmail.validate("abc123@.com.com"));
+			assertEquals( "invalidEmail" , userValidation.validateEmail.validate("abc()*.com"));
+			assertEquals( "invalidEmail" , userValidation.validateEmail.validate("abc@%*.com"));
+			assertEquals( "invalidEmail" , userValidation.validateEmail.validate("abc..2002@gmail.com"));
+			assertEquals( "invalidEmail" , userValidation.validateEmail.validate("abc.@gmail.com"));
+			assertEquals( "invalidEmail" , userValidation.validateEmail.validate("abc@abc@gmail.com"));
+			assertEquals( "invalidEmail" , userValidation.validateEmail.validate("abc@gmail.com.aa.au"));
+		}
+		catch(UserValidationException e){
+		}
+			
 	}
 	
 	//UC 4
 	
 		@Test
 		public void mobile_ifValid_shouldReturnTrue() {
-			assertEquals( "true", userValidation.validateMobile("981 1112223333") );
-			assertEquals( "true" , userValidation.validateMobile("1 2223334444"));	
+			try {
+				assertEquals( "true", userValidation.validateMobile.validate("981 1112223333") );
+				assertEquals( "true" , userValidation.validateMobile.validate("1 2223334444"));	
+			}
+			catch(UserValidationException e){
+			}
+				
 		}
 		
 		@Test
 		public void mobile_ifInvalid_shouldReturnFalse() {
-			assertEquals( "invalidMobileNumber", userValidation.validateMobile("999888777") );
-			assertEquals( "invalidMobileNumber" , userValidation.validateMobile("9999 9997776665"));	
+			try {
+				assertEquals( "invalidMobileNumber", userValidation.validateMobile.validate("999888777") );
+				assertEquals( "invalidMobileNumber" , userValidation.validateMobile.validate("9999 9997776665"));	
+			}
+			catch(UserValidationException e){
+			}
+				
 		}
 		
 	//UC 7
 		
 		@Test
 		public void password_ifValid_shouldReturnTrue() {
-			assertEquals( "true", userValidation.validatePassword("Abcdef123") );
-			assertEquals( "true" , userValidation.validatePassword("ASDF12345"));	
+			try {
+				assertEquals( "true", userValidation.validatePassword.validate("Abcdef123") );
+				assertEquals( "true" , userValidation.validatePassword.validate("ASDF12345"));	
+			}
+			catch(UserValidationException e){
+			}
+				
 		}
 		
 		@Test
 		public void password_ifInvalid_shouldReturnFalse() {
-			assertEquals( "invalidPassword", userValidation.validatePassword("2222") );
-			assertEquals( "invalidPassword" , userValidation.validatePassword("Asdfghjkl"));	
+			try {
+				assertEquals( "invalidPassword", userValidation.validatePassword.validate("2222") );
+				assertEquals( "invalidPassword" , userValidation.validatePassword.validate("Asdfghjkl"));	
+			}
+			catch(UserValidationException e){
+			}
+				
 		}
 		
-		
+		/*
 		
 	//UC 10
 	
@@ -125,7 +173,7 @@ public class UserValidationTest {
 		String password = "aaaabbb222";
 		assertEquals("SAD", userValidation.validateUser(name, surname, mobile, email, password));
 	}
-	/*
+	
 	@ParameterizedTest
 	@ValueSource(strings = {"abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net", "abc.100@abc.com.au",
 			"abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com"})
@@ -139,7 +187,7 @@ public class UserValidationTest {
 	public void multipleEmail_ifInvalid_shouldReturnInvalidss(String invalidEmails) {
 		assertEquals("invalidEmail", userValidation.validateEmail(invalidEmails));	
 	}
-	*/
+	
 	
 	//UC 11
 	@ParameterizedTest
@@ -159,6 +207,7 @@ public class UserValidationTest {
 			assertEquals("invalidEmail", userValidation.validateEmail(ie[i]));
 		}
 	}
+	*/
 		
 
 }
